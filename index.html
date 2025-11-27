@@ -158,6 +158,7 @@
 
         /**
          * Genera el HTML para un nuevo periodo de entrada.
+         * Se ha eliminado el valor predeterminado del input de nombre.
          */
         function crearPeriodoHTML(id, esInicial = false) {
             periodoIdCounter++;
@@ -174,7 +175,7 @@
                         <!-- Nombre/Descripción del Periodo -->
                         <div class="md:col-span-1">
                             <label for="nombre-periodo-${id}" class="block text-xs font-medium text-gray-600 mb-1">Nombre del Periodo (Ej: P.N.I., C.P.R. O AFP)</label>
-                            <input type="text" id="nombre-periodo-${id}" value="${esInicial ? 'Periodo Principal' : `Periodo ${id}`}" placeholder="Nombre Opcional" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm text-sm">
+                            <input type="text" id="nombre-periodo-${id}" value="" placeholder="Nombre Opcional" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm text-sm">
                         </div>
                         <!-- Fecha de Ingreso -->
                         <div class="md:col-span-1">
@@ -285,10 +286,13 @@
                 const id = periodo.id.split('-')[1];
                 const inputIngreso = document.getElementById(`fecha-ingreso-${id}`).value;
                 const inputCalculo = document.getElementById(`fecha-calculo-${id}`).value;
-                const nombrePeriodo = document.getElementById(`nombre-periodo-${id}`).value || `Periodo sin Nombre #${id}`;
+                // Si el nombre está vacío, usa "Periodo sin Nombre" en el resultado.
+                const nombrePeriodo = document.getElementById(`nombre-periodo-${id}`).value || 'Periodo sin Nombre'; 
 
                 if (!inputIngreso || !inputCalculo) {
-                    errorDiv.innerHTML += `Por favor, ingresa ambas fechas para el periodo: "${nombrePeriodo}".<br>`;
+                    // Usar el ID para referenciar el periodo en caso de error si no tiene nombre
+                    const nombreRef = document.getElementById(`nombre-periodo-${id}`).value || `Periodo #${id}`;
+                    errorDiv.innerHTML += `Por favor, ingresa ambas fechas para el periodo: "${nombreRef}".<br>`;
                     erroresEncontrados = true;
                     return;
                 }
