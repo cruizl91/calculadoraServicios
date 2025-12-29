@@ -1,0 +1,142 @@
+:root {
+    --primary-green: #088024;
+}
+
+/* Importación de fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* --- ESTILOS BASE --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Gris muy claro de fondo */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+/* --- DISEÑO DEL CONTENEDOR --- */
+.contenedor-principal {
+    flex-grow: 1;
+    padding: 2rem 1rem;
+    margin-top: 85px; /* Espacio para que el header fijo no tape el contenido */
+}
+
+/* El panel blanco central (la "caja" de la calculadora) */
+.panel-calculadora {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* --- TÍTULOS Y TEXTOS --- */
+.titulo-herramienta {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 40px; 
+    border-bottom: 3px solid var(--primary-green);
+    padding-bottom: 10px;
+    font-weight: 300; /* Fuente delgada y elegante */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.titulo-herramienta i {
+    color: var(--primary-green);
+}
+
+.subtitulo-instruccion {
+    text-align: left; 
+    margin-top: -20px;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* --- TARJETAS DE PERIODOS --- */
+.tarjeta-periodo {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+}
+
+.tarjeta-periodo:hover {
+    border-color: #10b981;
+}
+
+/* --- BOTONES --- */
+.boton-secundario {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #10b981;
+    color: #10b981;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.boton-secundario:hover {
+    background-color: #f0fdf4;
+}
+
+.boton-principal {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #10b981;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.boton-principal:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+.boton-reiniciar {
+    background-color: #ef4444;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* --- RESULTADOS --- */
+.cuadro-resultado-final {
+    background-color: #10b981;
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border-left: 8px solid #065f46;
+    margin-top: 1.5rem;
+}
+
+/* Estilo para los inputs */
+input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+/* Responsividad básica */
+@media (max-width: 640px) {
+    .panel-calculadora { padding: 1.5rem; }
+    .titulo-herramienta { font-size: 1.4rem; flex-direction: column; }
+}
